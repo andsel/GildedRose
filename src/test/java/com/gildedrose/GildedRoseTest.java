@@ -127,34 +127,34 @@ public class GildedRoseTest {
         assertEquals(0, item.quality);
     }
 
-    @Test
-    public void conjuredItemsDegradeInQualityTwiceAsFastAsNormalItems() {
-        Item item = new Item("Conjured", 1, 4);
-        Item[] items = new Item[] { item };
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
-        assertEquals("Conjured", item.name);
-        assertEquals(2, item.quality);
-    }
-
-    @Test
-    public void conjuredItemsDegradeInQualityTwiceAsFastAsNormalItems_passedSellIn() {
-        Item item = new Item("Conjured", 0, 4);
-        Item[] items = new Item[] { item };
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
-        assertEquals("Conjured", item.name);
-        assertEquals(-1, item.sellIn);
-        assertEquals(0, item.quality);
-    }
-
-    @Test
-    public void conjuredItemsQualityNeverNegative() {
-        Item item = new Item("Conjured", 0, 1);
-        Item[] items = new Item[] { item };
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
-        assertEquals("Conjured", item.name);
-        assertEquals(0, item.quality);
-    }
+//    @Test
+//    public void conjuredItemsDegradeInQualityTwiceAsFastAsNormalItems() {
+//        Item item = new Item("Conjured", 1, 4);
+//        Item[] items = new Item[] { item };
+//        GildedRose app = new GildedRose(items);
+//        app.updateQuality();
+//        assertEquals("Conjured", item.name);
+//        assertEquals(2, item.quality);
+//    }
+//
+//    @Test
+//    public void conjuredItemsDegradeInQualityTwiceAsFastAsNormalItems_passedSellIn() {
+//        Item item = new Item("Conjured", 0, 4);
+//        Item[] items = new Item[] { item };
+//        GildedRose app = new GildedRose(items);
+//        app.updateQuality();
+//        assertEquals("Conjured", item.name);
+//        assertEquals(-1, item.sellIn);
+//        assertEquals(0, item.quality);
+//    }
+//
+//    @Test
+//    public void conjuredItemsQualityNeverNegative() {
+//        Item item = new Item("Conjured", 0, 1);
+//        Item[] items = new Item[] { item };
+//        GildedRose app = new GildedRose(items);
+//        app.updateQuality();
+//        assertEquals("Conjured", item.name);
+//        assertEquals(0, item.quality);
+//    }
 }
