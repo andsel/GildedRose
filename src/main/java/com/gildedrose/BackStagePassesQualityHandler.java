@@ -14,4 +14,8 @@ class BackStagePassesQualityHandler extends DefaultQualityHandler {
             item.quality = item.quality + 1;
         }
     }
+    @Override
+    public void handleQualityOnceSellInExpires(Item item) {
+        item.quality = 0;
+    }
 }

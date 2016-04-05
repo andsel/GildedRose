@@ -36,28 +36,16 @@ class GildedRose {
             }
             QualityHandler handler = QualityHandlerFactory.buildFromItem(item);
 
-            handler.handleQuality(item);
-
             if (item.sellIn < 0) {
-                if (item.name.equals("Backstage passes")) {
-                    item.quality = -1;
-                }
-
-                if (isBackstage(item)) {
-                    item.quality = item.quality + 1;
-                } else {
-                    handler.handleQuality(item);
-                }
+                handler.handleQualityOnceSellInExpires(item);
+            } else {
+                handler.handleQuality(item);
             }
 
             if (item.quality > 50) {
                 item.quality = 50;
             }
         }
-    }
-
-    private boolean isBackstage(Item item) {
-        return item.name.equals("Backstage passes");
     }
 
     private void decrementDays(Item item) {

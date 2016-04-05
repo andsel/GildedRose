@@ -10,4 +10,12 @@ class DefaultQualityHandler implements QualityHandler {
 
     }
 
+    @Override
+    public void handleQualityOnceSellInExpires(Item item) {
+        item.quality = item.quality - 2;
+        if (item.quality < 0) {
+            item.quality = 0;
+        }
+    }
+
 }
