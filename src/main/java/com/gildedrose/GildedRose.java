@@ -5,14 +5,17 @@ class GildedRose {
 
 
      static class QualityHandlerFactory {
-        static final QualityHandler DEFAULT_QUALITY_HANDLER = new DefaultQualityHandler();
+         static final QualityHandler DEFAULT_QUALITY_HANDLER = new DefaultQualityHandler();
          static final QualityHandler AGED_BRIE_QUALITY_HANDLER = new AgedBrieQualityHandler();
+         static final QualityHandler BACKSTAGE_PASSES_QUALITY_HANDLER = new BackStagePassesQualityHandler();
 
-        static QualityHandler buildFromItem
-                (Item item) {
+
+         static QualityHandler buildFromItem(Item item) {
             switch (item.name) {
                 case "Aged Brie":
                     return AGED_BRIE_QUALITY_HANDLER;
+                case "Backstage passes":
+                    return BACKSTAGE_PASSES_QUALITY_HANDLER;
                 default:
                     return DEFAULT_QUALITY_HANDLER;
             }
@@ -33,28 +36,14 @@ class GildedRose {
             }
             QualityHandler handler = QualityHandlerFactory.buildFromItem(item);
 
-            if (item.name.equals("Backstage passes")) {
-                if (item.sellIn < 10) {
-                    item.quality = item.quality + 1;
-                }
-
-                if (item.sellIn < 5) {
-                    item.quality = item.quality + 1;
-                }
-            }
-
-            if (isOlderGetBetter(item)) {
-                item.quality = item.quality + 1;
-            } else {
-                handler.handleQuality(item);
-            }
+            handler.handleQuality(item);
 
             if (item.sellIn < 0) {
                 if (item.name.equals("Backstage passes")) {
                     item.quality = -1;
                 }
 
-                if (isOlderGetBetter(item)) {
+                if (isBackstage(item)) {
                     item.quality = item.quality + 1;
                 } else {
                     handler.handleQuality(item);
@@ -67,7 +56,7 @@ class GildedRose {
         }
     }
 
-    private boolean isOlderGetBetter(Item item) {
+    private boolean isBackstage(Item item) {
         return item.name.equals("Backstage passes");
     }
 
