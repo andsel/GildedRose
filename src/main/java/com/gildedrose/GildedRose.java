@@ -6,12 +6,13 @@ class GildedRose {
 
      static class QualityHandlerFactory {
         static final QualityHandler DEFAULT_QUALITY_HANDLER = new DefaultQualityHandler();
+         static final QualityHandler AGED_BRIE_QUALITY_HANDLER = new AgedBrieQualityHandler();
 
         static QualityHandler buildFromItem
                 (Item item) {
             switch (item.name) {
-//                case "Sulfuras":
-//                    return null;
+                case "Aged Brie":
+                    return AGED_BRIE_QUALITY_HANDLER;
                 default:
                     return DEFAULT_QUALITY_HANDLER;
             }
@@ -67,7 +68,7 @@ class GildedRose {
     }
 
     private boolean isOlderGetBetter(Item item) {
-        return item.name.equals("Aged Brie") || item.name.equals("Backstage passes");
+        return item.name.equals("Backstage passes");
     }
 
     private void decrementDays(Item item) {
