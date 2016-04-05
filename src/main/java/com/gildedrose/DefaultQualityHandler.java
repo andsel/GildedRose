@@ -5,24 +5,19 @@ class DefaultQualityHandler implements QualityHandler {
     @Override
     public void handleQuality(Item item) {
         item.quality = item.quality - 1;
-        limitMinQuality(item);
-        limitMaxQuality(item);
+        limitMinMaxQuality(item);
     }
 
     @Override
     public void handleQualityOnceSellInExpires(Item item) {
         item.quality = item.quality - 2;
-        limitMinQuality(item);
-        limitMaxQuality(item);
+        limitMinMaxQuality(item);
     }
 
-    protected void limitMinQuality(Item item) {
+    protected void limitMinMaxQuality(Item item) {
         if (item.quality < 0) {
             item.quality = 0;
         }
-    }
-
-    protected void limitMaxQuality(Item item) {
         if (item.quality > 50) {
             item.quality = 50;
         }

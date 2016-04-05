@@ -9,6 +9,8 @@ class GildedRose {
         static final QualityHandler AGED_BRIE_QUALITY_HANDLER = new AgedBrieQualityHandler();
         static final QualityHandler BACKSTAGE_PASSES_QUALITY_HANDLER = new BackStagePassesQualityHandler();
         static final QualityHandler SULFURAS_QUALITY_HANDLER = new SulfurasQualityHandler();
+        static final QualityHandler CONJURED_QUALITY_HANDLER = new ConjuredQualityHandler();
+
 
         static QualityHandler buildFromItem(Item item) {
             switch (item.name) {
@@ -18,6 +20,8 @@ class GildedRose {
                     return BACKSTAGE_PASSES_QUALITY_HANDLER;
                 case "Sulfuras":
                     return SULFURAS_QUALITY_HANDLER;
+                case "Conjured":
+                    return CONJURED_QUALITY_HANDLER;
                 default:
                     return DEFAULT_QUALITY_HANDLER;
             }
