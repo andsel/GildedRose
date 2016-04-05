@@ -4,13 +4,13 @@ class GildedRose {
     Item[] items;
 
 
-     static class QualityHandlerFactory {
-         static final QualityHandler DEFAULT_QUALITY_HANDLER = new DefaultQualityHandler();
-         static final QualityHandler AGED_BRIE_QUALITY_HANDLER = new AgedBrieQualityHandler();
-         static final QualityHandler BACKSTAGE_PASSES_QUALITY_HANDLER = new BackStagePassesQualityHandler();
+    static class QualityHandlerFactory {
+        static final QualityHandler DEFAULT_QUALITY_HANDLER = new DefaultQualityHandler();
+        static final QualityHandler AGED_BRIE_QUALITY_HANDLER = new AgedBrieQualityHandler();
+        static final QualityHandler BACKSTAGE_PASSES_QUALITY_HANDLER = new BackStagePassesQualityHandler();
 
 
-         static QualityHandler buildFromItem(Item item) {
+        static QualityHandler buildFromItem(Item item) {
             switch (item.name) {
                 case "Aged Brie":
                     return AGED_BRIE_QUALITY_HANDLER;
@@ -21,7 +21,6 @@ class GildedRose {
             }
         }
     }
-
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -40,10 +39,6 @@ class GildedRose {
                 handler.handleQualityOnceSellInExpires(item);
             } else {
                 handler.handleQuality(item);
-            }
-
-            if (item.quality > 50) {
-                item.quality = 50;
             }
         }
     }

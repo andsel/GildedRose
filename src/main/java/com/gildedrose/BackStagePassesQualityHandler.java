@@ -13,7 +13,9 @@ class BackStagePassesQualityHandler extends DefaultQualityHandler {
         if (item.sellIn < 5) {
             item.quality = item.quality + 1;
         }
+        limitMaxQuality(item);
     }
+
     @Override
     public void handleQualityOnceSellInExpires(Item item) {
         item.quality = 0;
